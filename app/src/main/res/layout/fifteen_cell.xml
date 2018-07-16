@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_margin="2dp"
         android:layout_weight="1"
-        android:background="#3AE2CE"
+        android:background="@{cell.available ? 0xff3AE2CE : 0x0003AE2CE}"
         android:onClick="@{(v) -> viewModel.move(i, j)}">
 
         <TextView

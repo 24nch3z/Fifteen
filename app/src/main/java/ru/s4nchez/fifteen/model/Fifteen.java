@@ -49,8 +49,37 @@ public class Fifteen {
 
     public void move(int i, int j) {
         if (mCells[i][j].isAvailable()) {
-
+            int[] emptyCellPosition = getEmptyCellPosition();
+            if (checkTheNeighborhood(new int[] { i, j }, emptyCellPosition)) {
+                changeCells(new int[] { i, j }, emptyCellPosition);
+            }
         }
+    }
+
+    private boolean checkTheNeighborhood(int[] cell, int[] emptyCellPosition) {
+        if ((cell[0] == emptyCellPosition[0] && Math.abs(cell[1] - emptyCellPosition[1]) == 1) ||
+                (cell[1] == emptyCellPosition[1] && Math.abs(cell[0] - emptyCellPosition[0]) == 1)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private int[] getEmptyCellPosition() {
+        for (int i = 0; i < SIDE_COUNT; i++) {
+            for (int j = 0; j < SIDE_COUNT; j++) {
+                if (mCells[i][j] instanceof EmptyCell) {
+                    return new int[] { i, j };
+                }
+            }
+        }
+        return null;
+    }
+
+    private void changeCells(int[] cell, int[] empty) {
+        Cell buf = mCells[cell[0]][cell[1]];
+        mCells[cell[0]][cell[1]] = mCells[empty[0]][empty[1]];
+        mCells[empty[0]][empty[1]] = buf;
     }
 
     public Cell[][] getCells() {
