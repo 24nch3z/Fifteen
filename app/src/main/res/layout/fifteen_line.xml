@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="line"
+            type="ru.s4nchez.fifteen.model.Cell[]"/>
+        <variable
+            name="i"
+            type="int"/>
+        <variable
+            name="viewModel"
+            type="ru.s4nchez.fifteen.FifteenViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <include
+            layout="@layout/fifteen_cell"
+            app:cell="@{line[0]}"
+            app:i="@{i}"
+            app:j="@{0}"
+            app:viewModel="@{viewModel}"/>
+
+        <include
+            layout="@layout/fifteen_cell"
+            app:cell="@{line[1]}"
+            app:i="@{i}"
+            app:j="@{1}"
+            app:viewModel="@{viewModel}"/>
+
+        <include
+            layout="@layout/fifteen_cell"
+            app:cell="@{line[2]}"
+            app:i="@{i}"
+            app:j="@{2}"
+            app:viewModel="@{viewModel}"/>
+
+        <include
+            layout="@layout/fifteen_cell"
+            app:cell="@{line[3]}"
+            app:i="@{i}"
+            app:j="@{3}"
+            app:viewModel="@{viewModel}"/>
+    </LinearLayout>
+</layout>
