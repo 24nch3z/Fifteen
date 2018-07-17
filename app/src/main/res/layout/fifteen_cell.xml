@@ -22,8 +22,9 @@
         android:layout_height="match_parent"
         android:layout_margin="2dp"
         android:layout_weight="1"
-        android:background="@{cell.available ? 0xff3AE2CE : 0x0003AE2CE}"
-        android:onClick="@{(v) -> viewModel.move(i, j)}">
+        android:background="@{viewModel.fifteen.winMatrix[i][j] == cell.value ? 0xffd69249 : 0xfff2e8c9}"
+        android:onClick="@{(v) -> viewModel.move(i, j)}"
+        android:alpha="@{cell.available ? 1.0f : 0.0f}">
 
         <TextView
             android:id="@+id/textView"

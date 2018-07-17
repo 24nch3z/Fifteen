@@ -7,13 +7,19 @@ package ru.s4nchez.fifteen.model;
 public abstract class Cell {
 
     private String mName;
+    private int mValue;
 
-    public Cell(String name) {
+    public Cell(String name, int value) {
         mName = name;
+        mValue = value;
     }
 
     public String getName() {
         return mName;
+    }
+
+    public int getValue() {
+        return mValue;
     }
 
     public abstract boolean isAvailable();

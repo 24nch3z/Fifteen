@@ -2,6 +2,7 @@ package ru.s4nchez.fifteen.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -17,13 +18,33 @@ import java.util.List;
 
 public class Fifteen {
 
+    private static Fifteen sFifteen;
+
     private static final int SIDE_COUNT = 4;
     private static final int CELLS_COUNT = SIDE_COUNT * SIDE_COUNT;
 
     private Cell[][] mCells = new Cell[SIDE_COUNT][SIDE_COUNT];
+    private int[][] mWinMatrix = new int[SIDE_COUNT][SIDE_COUNT];
 
-    public Fifteen() {
+    public static Fifteen get() {
+        if (sFifteen == null) {
+            sFifteen = new Fifteen();
+        }
+        return sFifteen;
+    }
+
+    private Fifteen() {
+        initWinMatrix();
         initCells();
+    }
+
+    private void initWinMatrix() {
+        int k = 1;
+        for (int i = 0; i < SIDE_COUNT; i++) {
+            for (int j = 0; j < SIDE_COUNT; j++, k++) {
+                mWinMatrix[i][j] = k == (CELLS_COUNT - 1) ? 0 : k;
+            }
+        }
     }
 
     private void initCells() {
@@ -40,7 +61,7 @@ public class Fifteen {
     private List<Cell> getShuffleListOfCells() {
         List<Cell> cells = new ArrayList<>(CELLS_COUNT);
         for (int i = 1; i <= CELLS_COUNT - 1; i++) {
-            cells.add(new SimpleCell(String.valueOf(i)));
+            cells.add(new SimpleCell(String.valueOf(i), i));
         }
         cells.add(new EmptyCell());
         Collections.shuffle(cells);
@@ -84,5 +105,9 @@ public class Fifteen {
 
     public Cell[][] getCells() {
         return mCells;
+    }
+
+    public int[][] getWinMatrix() {
+        return mWinMatrix;
     }
 }

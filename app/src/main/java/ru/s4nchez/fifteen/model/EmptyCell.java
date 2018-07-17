@@ -7,7 +7,7 @@ package ru.s4nchez.fifteen.model;
 public class EmptyCell extends Cell {
 
     public EmptyCell() {
-        super("");
+        super("", 0);
     }
 
     @Override

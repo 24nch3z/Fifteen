@@ -6,8 +6,8 @@ package ru.s4nchez.fifteen.model;
 
 public class SimpleCell extends Cell {
 
-    public SimpleCell(String name) {
-        super(name);
+    public SimpleCell(String name, int value) {
+        super(name, value);
     }
 
     @Override

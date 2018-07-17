@@ -18,7 +18,7 @@ public class FifteenActivity extends AppCompatActivity {
         ActivityFifteenBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_fifteen);
 
-        mFifteen = new Fifteen();
+        mFifteen = Fifteen.get();
         mViewModel = new FifteenViewModel(mFifteen);
         binding.setViewModel(mViewModel);
     }
